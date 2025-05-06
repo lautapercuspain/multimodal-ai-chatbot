@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import {
   type UIMessage,
   appendResponseMessages,

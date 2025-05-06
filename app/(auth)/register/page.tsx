@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 'use client';
 
 import Link from 'next/link';
@@ -42,7 +43,15 @@ export default function Page() {
   }, [state]);
 
   const handleSubmit = (formData: FormData) => {
-    setEmail(formData.get('email') as string);
+    const emailValue = formData.get('email') as string;
+    setEmail(emailValue);
+    if (!emailValue.endsWith('@kunaico.com')) {
+      toast({
+        type: 'error',
+        description: 'Only @kunaico.com email addresses are allowed.',
+      });
+      return;
+    }
     formAction(formData);
   };
 
